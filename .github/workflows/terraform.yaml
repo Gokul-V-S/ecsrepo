@@ -21,7 +21,9 @@ jobs:
         terraform_version: 1.6.0
 
     - name: Terraform Init
-      run: terraform init
+      run:  |
+        ls -al
+        terraform init
       working-directory: .
 
     - name: Terraform Apply
