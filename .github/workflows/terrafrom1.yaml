@@ -1,4 +1,4 @@
-name: Terraform Apply – EC2
+name: Terraform Apply – EC2 - 1
 
 on:
   workflow_dispatch:  # manual trigger
