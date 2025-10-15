@@ -1,7 +1,5 @@
 provider "aws" {
   region     = var.aws_region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
 }
 
 resource "aws_instance" "example" {
@@ -13,9 +11,7 @@ resource "aws_instance" "example" {
   }
 }
 
-variable "aws_region"     {}
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
+variable "aws_region"     {default = us-east-1}
 variable "ami_id" {
   default = "ami-0c02fb55956c7d316" # Amazon Linux 2 AMI (us-east-1)
 }
