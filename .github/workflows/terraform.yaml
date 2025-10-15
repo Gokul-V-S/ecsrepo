@@ -9,6 +9,7 @@ jobs:
   terraform:
     name: Deploy EC2 with Terraform
     runs-on: ubuntu-latest
+    environment: production
 
     env:
       AWS_REGION: us-east-1
