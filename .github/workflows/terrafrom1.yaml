@@ -1,0 +1,33 @@
+name: Terraform Apply – EC2
+
+on:
+  workflow_dispatch:  # manual trigger
+
+jobs:
+  terraform:
+    name: Deploy EC2 with Terraform
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_REGION: us-east-1
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: 1.6.0
+
+    - name: Terraform Init
+      run: terraform init
+      working-directory: .
+
+    - name: Terraform Apply
+      run: |
+        terraform apply -auto-approve \
+          -var="aws_region=$AWS_REGION" \
+          -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" \
+          -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+      working-directory: .
