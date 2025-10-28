@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - vpc
   pull_request:
 
 permissions:
